@@ -1,17 +1,19 @@
-const sumAll = function (num1, num2) {
-	if (!Number.isInteger(num1) || !Number.isInteger(num2)) return 'ERROR';
-	if (num1 < 0 || num2 < 0) return 'ERROR';
+const sumAll = function (start, end) {
+	if (!Number.isInteger(start) || !Number.isInteger(end)) return 'ERROR';
+	if (start < 0 || end < 0) return 'ERROR';
+    
+	if(start > end) {
+        const temp = start;
+        start = end;
+        end = temp;
+    }
 
-	const array = [];
-
-	let start = num1 < num2 ? num1 : num2;
-	const end = num1 > num2 ? num1 : num2;
-
+    let sum = 0;
 	for (let i = start; i <= end; i++) {
-		array.push(start++);
-	}
+        sum += i;
+    }
 
-	return array.reduce((sum, item) => (sum += item), 0);
+	return sum;
 };
 
 // Do not edit below this line
